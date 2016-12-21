@@ -12,9 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class YardenCircleGame extends JFrame implements ActionListener {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 //Variables
