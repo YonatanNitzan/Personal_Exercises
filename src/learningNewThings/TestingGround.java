@@ -1,52 +1,16 @@
 package learningNewThings;
 
-import java.util.Scanner;
+import javax.swing.JFrame;
 
 public class TestingGround {
-
-	public static void main(String[] args) {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		String str;
+	public static void main(String[] args){
+		JFrame window = new JFrame();
+		window.setSize(640, 480);
+		window.setTitle("Bla Bla");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setVisible(true);
 		
-		System.out.print("Say something: ");
-		str = scanner.nextLine();
-		
-		switch(str)
-		{
-		case "Shit":
-			System.out.println("Fuck");
-		case "Puns":
-			System.out.println("Punssssssssssssssssssssssssssss");
-		case "How are you?":
-			System.out.println("Peachy: Bitch");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.out.println("Peachy: Fine*");
-		case "Peachy fails forever!":
-			System.out.println("Peachy: We haven't raped for a while");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.out.println("Peachy: RPED*");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.out.println("Peachy: RPED-**************");
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			System.out.println("Peachy: FUCCCCCXXX");
-		}
+		drawingComponent DC = new drawingComponent();
+		window.add(DC);
 	}
-
 }
