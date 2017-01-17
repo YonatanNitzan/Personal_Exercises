@@ -12,9 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class YardenCircleGame extends JFrame implements ActionListener {
+	private static final long serialVersionUID = 1L;
+	
 //Variables
-
-    int y, x;
+	int y, x;
 //Double Buffer
     private Image dbImage;
     private Graphics dbg;
@@ -46,15 +47,15 @@ public class YardenCircleGame extends JFrame implements ActionListener {
         @Override
         public void keyPressed(KeyEvent event) {
             int keyCode = event.getKeyCode();
-            if (keyCode == event.VK_A)
+            if (keyCode == KeyEvent.VK_A)
             {
                 x=x-7;
             }
-            if (keyCode == event.VK_D)
+            if (keyCode == KeyEvent.VK_D)
             {
                 x=x+7;
             }
-            if (keyCode == event.VK_W)
+            if (keyCode == KeyEvent.VK_W)
             {
             	direction = 1;
             	tm.start();
