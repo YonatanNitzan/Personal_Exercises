@@ -23,7 +23,6 @@ public class DrawingComponent extends JComponent implements ActionListener{
 	LinkedList<Color> line2C = new LinkedList<Color>();
 	
 	int s = 0;
-	//asd
 	
 	public void paintComponent(Graphics g)
 	{
