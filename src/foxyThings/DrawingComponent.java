@@ -4,16 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.Timer;
 
-import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -26,7 +23,7 @@ public class DrawingComponent extends JComponent implements ActionListener{
 	Color line1CI, line2CI;
 	Timer tm = new Timer(3000, this);
 	
-	BufferedImage sun;
+	BufferedImage cuteFox, sun, myFox, herBloopy, dorks;
 	
 	public void paintComponent(Graphics g)
 	{
@@ -36,7 +33,11 @@ public class DrawingComponent extends JComponent implements ActionListener{
 		SlideBg(g2);
 		
 		try {
+			cuteFox = ImageIO.read(getClass().getResourceAsStream("/CuteFox.jpg"));
 			sun = ImageIO.read(getClass().getResourceAsStream("/SunDrawing.png"));
+			myFox = ImageIO.read(getClass().getResourceAsStream("/FoxIsMine.jpg"));
+			herBloopy = ImageIO.read(getClass().getResourceAsStream("/BloppyIsFoxs.jpg"));
+			dorks = ImageIO.read(getClass().getResourceAsStream("/Dorks.jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -71,16 +72,19 @@ public class DrawingComponent extends JComponent implements ActionListener{
 		switch(s)
 		{
 		case 0:
-			g2.setColor(new Color(255, 205, 0));
+			g2.drawImage(cuteFox, 0, 0, null);
+		case 1:
+			g2.drawImage(sun, 0, 0,  null);
+		case 2:
 			
-			Ellipse2D.Double el1 = new Ellipse2D.Double(0, 0, 150, 150);
-			g2.fill(el1);
-			
-			g2.drawLine(75, 75, 150, 200);
-			g2.drawLine(75, 75, 100, 200);
-			g2.drawLine(75, 75, 200, 200);
+		case 3:
+			g2.drawImage(myFox, 0, 0, null);
+		case 4:
+			g2.drawImage(herBloopy, 0, 0, null);
+		case 11:
+			g2.drawImage(dorks, 0, 0, null);
 		default:
-			g2.drawImage(sun, 0, 0, null);
+			
 		}
 	}
 	
