@@ -2,7 +2,7 @@ package learningNewThings;
 
 import javax.swing.JFrame;
 
-public class TestingGround {
+public class Pong {
 	public static void main(String[] args){
 		JFrame window = new JFrame();
 		window.setSize(640, 480);
@@ -10,7 +10,7 @@ public class TestingGround {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 		
-		DrawingComponent DC = new DrawingComponent();
+		Pong_Drawing_Compnent DC = new Pong_Drawing_Compnent();
 		window.add(DC);
 	}
 }
