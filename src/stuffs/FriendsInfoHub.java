@@ -1,4 +1,4 @@
-package practices;
+package stuffs;
 
 public class FriendsInfoHub {
 
