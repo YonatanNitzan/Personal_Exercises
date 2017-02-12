@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Student {
 	private String[] nameArray = new String[4];
 	private String fullN, age;
-	private int yearOB, monthOB, dayOB, yearC, monthC, dayC;
+	private int yearOB, monthOB, dayOB; //, yearC, monthC, dayC;
 	Scanner sc = new Scanner(System.in);
 	
 	
@@ -36,7 +36,7 @@ public class Student {
 
 	void calculateAge()
 	{
-		Calendar now = Calendar.getInstance();
+		//Calendar now = Calendar.getInstance();
 		Calendar DOB = Calendar.getInstance();
 		DOB.set(yearOB, monthOB, dayOB);
 		//age = now - DOB;

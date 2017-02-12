@@ -17,6 +17,7 @@ public class Art_Drawing_Compnent extends JComponent {
 		int dotAmount, width, height, R, G, B;
 		Arc2D.Double circle;
 		Random rn = new Random();
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		Graphics2D g2 = (Graphics2D) g;

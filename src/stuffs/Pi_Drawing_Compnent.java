@@ -28,6 +28,7 @@ public class Pi_Drawing_Compnent extends JComponent implements ActionListener {
 	
 	public void paintComponent(Graphics g) {
 		Random rn = new Random();
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		int dotAmount;
 		double dotR;
