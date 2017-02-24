@@ -25,8 +25,8 @@ public class Pong_Panel extends JPanel implements ActionListener, KeyListener {
 		setBackground(Color.WHITE);
 		this.game = game;
 		ball = new Pong_Ball(game);
-		p1 = new Pong_Player(game, KeyEvent.VK_UP, KeyEvent.VK_DOWN, 1, 50);
-		p2 = new Pong_Player(game, KeyEvent.VK_W, KeyEvent.VK_S, 2, 50);
+		p1 = new Pong_Player(game, KeyEvent.VK_UP, KeyEvent.VK_DOWN, 1, Color.BLUE, 50);
+		p2 = new Pong_Player(game, KeyEvent.VK_W, KeyEvent.VK_S, 2, Color.RED, 50);
 		Timer timer = new Timer(5, this);
         timer.start();
         addKeyListener(this);

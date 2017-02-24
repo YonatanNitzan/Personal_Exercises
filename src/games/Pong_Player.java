@@ -1,17 +1,20 @@
 package games;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Pong_Player {
 
 	private static final int WIDTH = 15, HEIGHT = 65;
 	private int playerNum, up, down, x, y, yd, d;
+	private Color c;
 	private Pong game;
 
-	public Pong_Player(Pong game, int up, int down, int playerNum, int d) {
+	public Pong_Player(Pong game, int up, int down, int playerNum, Color c, int d) {
 		this.game = game;
 		this.up = up;
 		this.down = down;
+		this.c = c;
 		this.playerNum = playerNum;
 		this.d = d;
 	}
@@ -48,6 +51,7 @@ public class Pong_Player {
 	}
 
 	public void paint(Graphics g) {
+		g.setColor(c);
 		g.fillRect(x, y, WIDTH, HEIGHT);
 	}
 }
