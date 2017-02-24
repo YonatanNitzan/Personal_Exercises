@@ -4,35 +4,53 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class Pong_Panel extends JPanel implements ActionListener, KeyListener {
 
 	private Pong game;
     private Pong_Ball ball;
     private Pong_Player p1, p2;
     private int score1, score2;
-	
+	private String string;
+    
 	public Pong_Panel(Pong game) {
-		setBackground(Color.GREEN);
+		setBackground(Color.WHITE);
 		this.game = game;
-		ball = new Pong_Ball();
-		p1 = new Pong_Player(game, KeyEvent.VK_UP, KeyEvent.VK_DOWN, 10);
-		p2 = new Pong_Player(game, KeyEvent.VK_W, KeyEvent.VK_S, 100);
+		ball = new Pong_Ball(game);
+		p1 = new Pong_Player(game, KeyEvent.VK_UP, KeyEvent.VK_DOWN, 1, 50);
+		p2 = new Pong_Player(game, KeyEvent.VK_W, KeyEvent.VK_S, 2, 50);
 		Timer timer = new Timer(5, this);
         timer.start();
         addKeyListener(this);
+        game.addKeyListener(this);
         setFocusable(true);
+        
+        addComponentListener(new ComponentAdapter() 
+        {  
+                public void componentResized(ComponentEvent evt) {
+                    p1.resized();
+                    p2.resized();
+                }
+        });
 	}
 	
-	public void paintComponents(Graphics g) {
-		super.paintComponents(g);
-	}
+	@Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        string = game.getPanel().getScore(1) + " : " + game.getPanel().getScore(2);
+        g.drawString(string, game.getWidth() / 2 - g.getFontMetrics().stringWidth(string) / 2, 10);
+        ball.paint(g);
+        p1.paint(g);
+        p2.paint(g);
+    }
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -58,7 +76,9 @@ public class Pong_Panel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	private void update() {
-		
+		p1.update();
+		p2.update();
+		ball.update();
 	}
 	
 	public Pong_Player getPlayer(int playerNo) {
@@ -81,5 +101,4 @@ public class Pong_Panel extends JPanel implements ActionListener, KeyListener {
         else
             return score2;
     }
-
 }
