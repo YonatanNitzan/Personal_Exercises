@@ -16,13 +16,13 @@ public class Pong extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(WIDTH, HEIGHT));
 		setSize(WIDTH, HEIGHT);
-		pack();
 		setVisible(true);
 		
 		panel = new Pong_Panel(this);
 		add(panel);
 		
 		validate();
+		pack();
 	}
 	
 	public Pong_Panel getPanel()

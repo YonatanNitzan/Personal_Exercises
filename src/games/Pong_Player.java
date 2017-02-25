@@ -2,6 +2,7 @@ package games;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Pong_Player {
 
@@ -20,10 +21,10 @@ public class Pong_Player {
 	}
 
 	public void update() {
-		if(y == game.getHeight() - (HEIGHT / 2))
+		if(y > game.getHeight() - (HEIGHT))
 			y = -(HEIGHT / 2) + 1;
-		else if(y == -(HEIGHT / 2))
-			y = game.getHeight() - (HEIGHT / 2) - 1;
+		else if(y < -(HEIGHT / 2))
+			y = game.getHeight() - (HEIGHT) - 1;
 		else
 			y += yd;
 	}
@@ -54,4 +55,8 @@ public class Pong_Player {
 		g.setColor(c);
 		g.fillRect(x, y, WIDTH, HEIGHT);
 	}
+	
+	public Rectangle getBounds() {
+        return new Rectangle(x, y, WIDTH, HEIGHT);
+    }
 }
