@@ -4,25 +4,19 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.Arc2D;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JComponent;
-import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class Pi_Drawing_Compnent extends JComponent implements ActionListener {
+public class Pi_Drawing_Compnent extends JComponent {
 	
-	private Timer tm;
-	private int tc = 30000, c = 0;
-	private double x, cX, y, cY, aboveCount = 0, belowCount = 0, estimatedPi;
+	private int c = 0;
+	private double x, y, aboveCount = 0, belowCount = 0, estimatedPi;
 	private LinkedList<Double> xList = new LinkedList<Double>(), yList = new LinkedList<Double>();
-	private Iterator<Double> xIt = null, yIt = null;
 	private Graphics2D g2;
 	private Arc2D.Double circle;
 	
@@ -55,8 +49,8 @@ public class Pi_Drawing_Compnent extends JComponent implements ActionListener {
 		
 		System.out.println("Dots made!");
 
-		xIt = xList.iterator();
-		yIt = yList.iterator();
+		xList.iterator();
+		yList.iterator();
 		
 		while (dotAmount != 0)
 		{
@@ -84,49 +78,5 @@ public class Pi_Drawing_Compnent extends JComponent implements ActionListener {
 
 		System.out.println("Estimated Pi: " + estimatedPi);
 		System.out.println("Pi: " + Math.PI);
-		
-		//tm = new Timer(1, this);
-        //tm.start();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		/*
-		if (!(xIt.hasNext()))
-		{
-			
-			estimatedPi = belowCount / (belowCount + aboveCount);
-			estimatedPi *= 4;
-
-			System.out.println("Estimated Pi: " + estimatedPi);
-			System.out.println("Pi: " + Math.PI);
-			
-			tm.stop();
-		}
-		else
-		{
-			System.out.printf("Above: %f\nBelow: %f\ncount: %d\n", aboveCount, belowCount, tc);
-			
-			try
-			{
-				cX = xIt.next();
-				cY = yIt.next();
-				
-				if ((Math.pow(cX, 2) + Math.pow(cY, 2)) > 1) {
-					aboveCount++;
-					drawCircle(Color.BLUE, g2, cX, cY);
-				}
-
-				else {
-					belowCount++;
-					drawCircle(Color.RED, g2, cX, cY);
-				}
-			}
-			finally
-			{
-				tc--;
-			}
-		}
-	*/
 	}
 }
