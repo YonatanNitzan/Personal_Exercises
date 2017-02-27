@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+@SuppressWarnings("serial")
 public class Factman_Swing extends Factman_GUI {
     static ArrayList<Integer> gameBoard;
     static int upperBound, factorIndex, p1Score = 0, p2Score = 0;
@@ -53,7 +54,7 @@ public class Factman_Swing extends Factman_GUI {
             // number is entered in the text field
             if (userSelection >= 0) {
                 // save the input and set it back to zero
-                // so the loop doesnt fire again
+                // so the loop doesn't fire again
                 int selection = userSelection;
                 userSelection = -1;
                 System.out.println("User selected " + selection);
