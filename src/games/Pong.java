@@ -7,15 +7,14 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Pong extends JFrame {
 	
-	private final static int WIDTH = 300, HEIGHT = 300;
+	private final static int WIDTH = 1100, HEIGHT = 700;
     private Pong_Panel panel;
 	
 	public Pong() {
 		setTitle("Two player Pong!");
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(WIDTH, HEIGHT));
-		setSize(WIDTH, HEIGHT);
 		setVisible(true);
 		
 		panel = new Pong_Panel(this);
