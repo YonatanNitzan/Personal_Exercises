@@ -3,18 +3,36 @@ package games;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class SI_Panel extends JPanel {
+public class SI_Panel extends JPanel implements ActionListener {
 
+	/* Variable declaration */
 	private final int CELLWIDTH = 5, CELLHEIGHT = CELLWIDTH;
-	//private Space_Invaders_Frame frame;
+	private Space_Invaders_Frame frame;
+	private int xI, yI;
+	private SI_Enemy inv1, inv2;
+	private SI_Player player;
+	private Timer gameTime;
 	
 	public SI_Panel(Space_Invaders_Frame frame) {
 		setBackground(Color.BLACK);					//Sets a white background
-		//this.frame = frame;							//Sets the value of the private frame variable
+		this.frame = frame;							//Sets the value of the private frame variable
+		xI = 10;									//start x
+		yI = 50;									//start y
+		
+		inv1 = new SI_Enemy("Medium", xI, yI); //Creates an Invader
+		inv2 = new SI_Enemy("Medium", xI + 100, yI); //Creates an Invader
+		player = new SI_Player(220, 400, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT);
+		
+		gameTime = new Timer(5, this);
+		gameTime.start();
 	}
 	
 	@Override
@@ -24,57 +42,23 @@ public class SI_Panel extends JPanel {
 		
 		Graphics2D g2 = (Graphics2D) g;				//Translates the graphics variable to a 2D graphics one
 		
-		drawInvader(g2, 100, 100);		//Creates an Invader at (100;100)
-		drawInvader(g2, 200, 100);		//Creates an Invader at (200;100)
-		drawPlayer(g2, 150, 200);		//Creates the player ship at (150;200)
+		inv1.paint(g2);								//paints the first invader
+		inv2.paint(g2);								//paints the second invader
+		player.paint(g2);							//paints the player
+
+		/* Draws the pixel grid */
+		g2.setColor(Color.BLACK);
+		for(int i = 0; i < 100; i++)
+		{
+			for(int j = 0; j < 100; j++)
+			{
+				g2.drawRect(i * CELLWIDTH, j * CELLHEIGHT, CELLWIDTH, CELLHEIGHT);
+			}
+		}
 	}
 
-	/* Function which draws a space invader in a given color and place */
-	private void drawInvader(Graphics2D g2, int x, int y) {
-		g2.setColor(Color.WHITE);
-		/* Base shape */
-		g2.fillRect(x, y, 11 * CELLWIDTH, 5 * CELLHEIGHT);
-		/* Outer mouth parts */
-		g2.fillRect(x + 3 * CELLWIDTH, y + 5 * CELLHEIGHT, 2 * CELLWIDTH, CELLHEIGHT);
-		g2.fillRect(x + 6 * CELLWIDTH, y + 5 * CELLHEIGHT, 2 * CELLWIDTH, CELLHEIGHT);
-		/* Ears */
-		g2.fillRect(x + 3 * CELLWIDTH, y - CELLHEIGHT, CELLWIDTH, CELLHEIGHT);
-		g2.fillRect(x + 2 * CELLWIDTH, y - 2 * CELLHEIGHT, CELLWIDTH, CELLHEIGHT);
-		g2.fillRect(x + 7 * CELLWIDTH, y - CELLHEIGHT, CELLWIDTH, CELLHEIGHT);
-		g2.fillRect(x + 8 * CELLWIDTH, y - 2 * CELLHEIGHT, CELLWIDTH, CELLHEIGHT);
-		
-		g2.setColor(Color.BLACK);
-		/* Body rounding */
-		g2.fillRect(x, y, CELLWIDTH, CELLHEIGHT * 2);
-		g2.fillRect(x + CELLWIDTH, y, CELLWIDTH, CELLHEIGHT);
-		g2.fillRect(x + 10 * CELLWIDTH, y, CELLWIDTH, CELLHEIGHT * 2);
-		g2.fillRect(x + 9 *CELLWIDTH, y, CELLWIDTH, CELLHEIGHT);
-		/* Eyes */
-		g2.fillRect(x + 3 * CELLWIDTH, y + CELLHEIGHT, CELLWIDTH, CELLHEIGHT);
-		g2.fillRect(x + 7 * CELLWIDTH, y + CELLHEIGHT, CELLWIDTH, CELLHEIGHT);
-		/* "Arm pits" */
-		g2.fillRect(x + CELLWIDTH, y + 3 * CELLHEIGHT, CELLWIDTH, 2 * CELLHEIGHT);
-		g2.fillRect(x + 9 * CELLWIDTH, y + 3 * CELLHEIGHT, CELLWIDTH, 2 * CELLHEIGHT);
-		/* Mouth space */
-		g2.fillRect(x + 3 * CELLWIDTH, y + 4 * CELLHEIGHT, 5 * CELLWIDTH, CELLHEIGHT);
-		
-		System.out.printf("An Invader was drawn at (%d; %d)\n", x, y);
-	}
-	
-	/* Function which draws the player ship in a given place */
-	private void drawPlayer(Graphics2D g2, int x, int y) {
-		g2.setColor(Color.GREEN);
-		/* Base shape */
-		g2.fillRect(x, y, 11 * CELLWIDTH, 5 * CELLHEIGHT);
-		/* Gun */
-		g2.fillRect(x + 4 * CELLWIDTH, y - 2 * CELLHEIGHT, 3 * CELLWIDTH, 2 * CELLHEIGHT);
-		g2.fillRect(x + 5 * CELLWIDTH, y - 3 * CELLHEIGHT, CELLWIDTH, CELLHEIGHT);
-		
-		g2.setColor(Color.BLACK);
-		/* Body rounding */
-		g2.fillRect(x, y, CELLWIDTH, CELLHEIGHT);
-		g2.fillRect(x + 10 * CELLWIDTH, y, CELLWIDTH, CELLHEIGHT);
-		
-		System.out.printf("The player was drawn at (%d; %d)\n", x, y);
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		repaint();
 	}
 }
