@@ -103,6 +103,6 @@ public class SI_Enemy implements ActionListener {
 	
 	public Rectangle getBounds()
 	{
-		return new Rectangle(x, y - CELLHEIGHT, 11 * CELLWIDTH, 8 * CELLHEIGHT);
+		return new Rectangle(x, y - 2 * CELLHEIGHT, 11 * CELLWIDTH, 8 * CELLHEIGHT);
 	}
 }
