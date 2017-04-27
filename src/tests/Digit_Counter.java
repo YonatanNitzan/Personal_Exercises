@@ -1,12 +1,17 @@
 package tests;
 
+import java.util.Scanner;
+
 public class Digit_Counter {
 	
 	public static void main(String[] args) {
-		int i, j;
+		int in, i, j;
 		int c0 = 0, c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, c7 = 0, c8 = 0, c9 = 0;
+		Scanner sc = new Scanner(System.in);
 		
-		for (i = 0; i < 1000000000; i++)
+		System.out.print("Enter a number: ");
+		in = sc.nextInt();
+		for (i = 0; i < in; i++)
 		{
 			for (j = 0; j < 10; j++)
 			{	
@@ -49,6 +54,8 @@ public class Digit_Counter {
 			}
 			j = 0;
 		}
+		
+		sc.close();
 		
 		System.out.println("0: " + c0);
 		System.out.println("1: " + c1);
