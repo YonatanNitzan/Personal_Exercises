@@ -53,6 +53,21 @@ public class SI_Player {
 			shoot();
 		}
 	}
+	
+	public void released(int key) {
+		if(key == left)
+		{
+			x -= CELLWIDTH;
+		}
+		else if(key == right)
+		{
+			x += CELLWIDTH;
+		}
+		else if (key == shoot)
+		{
+			shoot();
+		}
+	}
 
 	private void shoot() {
 		lazer = new SI_Player_Lazer(x + 5 * CELLWIDTH, y - 3 * CELLHEIGHT);
