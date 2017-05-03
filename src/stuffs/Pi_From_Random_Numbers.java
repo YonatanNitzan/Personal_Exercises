@@ -10,8 +10,10 @@ public class Pi_From_Random_Numbers {
 		window.setTitle("Pi from random numbers");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
+		window.setFocusable(true);
+		window.toBack();
 		
-		Pi_Drawing_Compnent DC = new Pi_Drawing_Compnent();
+		Pi_Drawing_Compnent DC = new Pi_Drawing_Compnent(window);
 		window.add(DC);
 	}
 }
