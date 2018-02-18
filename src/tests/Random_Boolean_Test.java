@@ -9,7 +9,7 @@ public class Random_Boolean_Test {
 		Random rn = new Random();
 		Boolean b;
 		
-		while(x < 100)
+		while(x < 100000)
 		{
 			b = rn.nextBoolean();
 			
@@ -21,6 +21,7 @@ public class Random_Boolean_Test {
 			x++;
 		}
 		
+		System.out.println(trueC > 5000 ? "Fuck Yes" : "Fuck NO");
 		System.out.printf("\nTrue - %d\nFalse - %d", trueC, falseC);
 	}
 
